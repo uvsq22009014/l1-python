@@ -43,12 +43,102 @@ def afficheTemps(temps):
 
 #afficheTemps((1,0,14,23))  
 
+
+def verifieTemps (temps) :
+    # vérifie que le temps saisi par l'utilisateur est correct
+
+    #jours, heures, minutes, secondes = temps
+    _, heures, minutes, secondes = temps
+
+    # si heures > un jour
+    # si minutes > une heure
+    # secondes > une minute
+   
+    if (heures >= 24) or (minutes >= 60) or (secondes >= 60):
+       return (False)
+    else :
+        return (True)
+
+
 def demandeTemps():
-    jour = int(input("nombre de jours "))
-    heure = int(input("nombre d'heures "))
-    minute = int(input("nombre de minutes "))
-    seconde = int(input("nombre de secondes `"))
-    # à terminer pour tenir compte des bornes
+
+    jours, heures, minutes, secondes = 0, 0, 0, 9999
+
+    while not verifieTemps((jours, heures, minutes, secondes)):
+        jour = int(input("nombre de jours "))
+        heure = int(input("nombre d'heures "))
+        minute = int(input("nombre de minutes "))
+        seconde = int(input("nombre de secondes "))
     return jour, heure, minute, seconde
 
-afficheTemps(demandeTemps())
+
+#temps = demandeTemps()
+#afficheTemps(temps)
+
+#probleme : re-demande toujours un temps même quand il est valide
+
+#pareil que :  afficheTemps(demandeTemps())
+
+
+def sommeTemps(temps1,temps2):
+
+    secondes = tempsEnSeconde(temps1) + tempsEnSeconde(temps2)
+    return secondeEnTemps(secondes)
+
+#print(sommeTemps((2,3,4,25),(5,22,57,1)))
+
+
+def proportionTemps(temps,proportion):
+    secondes = tempsEnSeconde(temps) * proportion
+    return secondeEnTemps(secondes)
+    
+#afficheTemps(proportionTemps((2,0,600,0),1))
+#afficheTemps(proportionTemps(proportion = 10, temps = ))
+#appeler la fonction en échangeant l'ordre des arguments
+
+
+def bissextile(annee) :
+
+    if (annee % 400 == 0) :
+        return True
+    elif (annee % 4 == 0) and (annee % 100 == 0) :
+        return False
+    elif (annee % 4 == 0) :
+        return True
+    else :
+        return False
+
+
+def tempsEnDate(temps: int):
+
+    jours, heures, minutes, secondes = temps
+
+    annee = jours // 365
+    jours %= 365
+
+    moisAnnee = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+    if bissextile(annee + 1970):
+        moisAnnee[1] = 29
+
+    
+    mois = 0
+    while jours >= moisAnnee[mois] :
+        jours -= moisAnnee[mois]
+        mois += 1
+    mois += 1
+
+    return(annee, mois, jours, heures, minutes, secondes)
+
+    #date origine : 1 Jan 1970
+
+
+def afficheDate(date = -1):
+    affichePluriel(date[0], "annee")
+    print(date[1], "mois", end = " ")
+    afficheTemps((date[2], date[3], date[4], date[5]))
+    
+temps = secondeEnTemps(1000000000)
+afficheTemps(temps)
+afficheDate(tempsEnDate(temps))
+afficheDate()
