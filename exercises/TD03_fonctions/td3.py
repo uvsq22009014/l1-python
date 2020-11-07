@@ -138,7 +138,23 @@ def afficheDate(date = -1):
     print(date[1], "mois", end = " ")
     afficheTemps((date[2], date[3], date[4], date[5]))
     
-temps = secondeEnTemps(1000000000)
-afficheTemps(temps)
-afficheDate(tempsEnDate(temps))
-afficheDate()
+#temps = secondeEnTemps(1000000000)
+#date = tempsEnDate(temps)
+#afficheTemps(temps)
+#afficheDate(date)
+
+### Calcul années bissextiles
+
+annees = 100000 // 365
+
+annees_bissextiles = []
+for annees in range (2020, 2020 + annees +1) :
+    if bissextile(annees) :
+        annees_bissextiles.append(annees)
+#print(annees_bissextiles)
+
+
+### BONUS
+
+#annees_bissextiles = [annees for annees in range (2020, 2020 + annees + 1) if bissextile(annees)]
+#annees_bissextiles = filter(bissextile, [annees for annees in range (2020, 2020 + annees + 1)])
