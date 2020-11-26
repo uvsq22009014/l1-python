@@ -27,7 +27,7 @@ def testeConjecture(n_max):
 
 def tempsVol(n):
     """ Retourne le temps de vol de n """
-    
+
     return len(syracuse(n)) - 1
 
 #print("Le temps de vol de", 3, "est", tempsVol(3))
@@ -43,7 +43,6 @@ def tempsVolListe(n_max):
 
 tvl = tempsVolListe(10000)
 m = max(tvl)
-print(tvl.index(m), "a un temps de vol de", m)
+#print(tvl.index(m), "a un temps de vol de", m)
 
-
-### fin sur le fichier du prof syracuseprof.py ###
+### suite sur le fichier syracuseprof ###
