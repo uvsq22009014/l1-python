@@ -1,8 +1,9 @@
 import tkinter as tk
 import random as rd
 
-racine = tk.Tk()
-racine.title("Mon dessin")
+#color = "blue"
+#racine = tk.Tk()
+#racine.title("Mon dessin")
 
 def cercle() :
     x = rd.randint(0, 400)
@@ -22,16 +23,19 @@ def croix() :
 
 def choisirCouleur() :
     global color
-    color = input("choisir une couleur")
+    color = input("choisir une couleur: ")
 
+color = "blue"
+racine = tk.Tk()
+racine.title("Mon dessin")
 
 #création des widgets
-bouton_couleur = tk.Button(racine, text = "Choisir une couleur", bg = "grey100", fg = "blue", padx = 20, font = ("Times", "20"))
+bouton_couleur = tk.Button(racine, text = "Choisir une couleur", bg = "grey100", fg = "blue", padx = 20, font = ("Times", "20"), command = choisirCouleur)
 bouton_cercle = tk.Button(racine, text = "Cercle", bg = "grey100", fg = "blue", padx = 20, font = ("Times", "20"), command = cercle)
 bouton_carre = tk.Button(racine, text = "Carré", bg = "grey100", fg = "blue", padx = 20, font = ("Times", "20"), command=carre)
 bouton_croix = tk.Button(racine, text = "Croix", bg = "grey100", fg = "blue", padx = 20, font = ("Times", "20"), command=croix)
 
-canvas = tk.Canvas(racine, width = 500, height = 500, bg = "black", bd = 10, relief = "raised")
+canvas = tk.Canvas(racine, width = 500, height = 500, bg = "black", bd = 10, relief = "raised",)
 
 #placement des widgets
 bouton_couleur.grid(column = 1, row = 0)
